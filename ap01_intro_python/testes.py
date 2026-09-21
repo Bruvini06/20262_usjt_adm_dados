@@ -1,6 +1,107 @@
-situacao = lambda nota: "aprovado" if nota >= 70 else "reprovado"
-print(situacao(85))
-print(situacao(40))
+import pandas as pd
+pedidos = pd.DataFrame({
+    "id_cliente": [1, 2, 1, 3],
+    "valor": [100, 200, 50, 80]
+})
+
+clientes = pd.DataFrame({
+    "id_cliente": [1, 2, 3],
+    "nome": ["Ana", "Bruno", "Carla"],
+    "cidade": ["SP", "Rio", "BH"]
+})
+
+completo = pedidos.merge(clientes, on="id_cliente")
+print(completo)
+
+# df = pd.read_csv(
+#     "clientes.csv",
+#     sep=",",
+#     decimal=".",
+#     encoding="utf-8"
+# )
+# df["com_frete"] = df["valor"] + 15
+# df["faixa"] = df["valor"].apply(
+#     lambda v: "alto" if v > 100 else "baixo"
+# )
+# print(
+#     df.sort_values("valor", ascending=False).head(3)
+#     )
+
+
+# print(
+#     df.groupby("cidade").agg(
+#         total=("valor", "sum"),
+#         media=("valor", "mean"),
+#         pedidos=("valor", "count")
+#         )
+#     )
+
+# print(df.groupby("cidade") ["valor"].mean())
+# print(df[["cliente", "valor", "faixa"]])
+# print(df.isnull().sum())
+# df["valor"].fillna(0)
+# print(df.head())
+
+# #series
+# serie = pd.Series(["1.234,56", "89,90", "abc"])
+# numeros = serie.str.replace(".", "", regex=False)
+# numeros = numeros.str.replace(",", ".", regex=False)
+# numero = pd.to_numeric(numeros, errors="coerce")
+# print(numero)
+# print(df.head())
+# print(df[(df["valor"] > 100) & (df["cidade"] == "Curitiba")])
+# print(df[df["cliente"].str.contains("a")])
+# print(df[df["valor"].between(80,200)])
+# print(df[df["cidade"].isin(["Recife", "Curitiba"])])
+# print(df[df["valor"] > 100])
+# print(df.loc[df["valor"] > 100, "cliente"])
+# print(df.iloc[0,0])
+# print(df.loc[0,"cidade"])
+# print(df["cidade"])
+# print(df["cidade"].value_counts())
+# print(df.describe())
+# print(df.info())
+# print(df.head(2))
+# print(df.shape)
+# print(df.dtypes)
+
+# dados = {
+#     "cliente": ["Maria", "João", "Ana", "Bruno"],
+#     "Cidade": ["São Paulo", "Recife", "Curitiba", "Recife"],
+#     "valor": [150.0, 89.90, 230.5, 60.00]
+# }
+# df = pd.DataFrame(dados)
+# print (df)
+
+
+# nome = "Ana"
+# #O nome é Ana
+# print("O nome é: " + nome)
+# #F-string
+# print(f"O nome é: {nome}")
+# # 2 + 2 = 4
+# numero = 2
+# print(f"{numero} + {numero} = {numero + numero}")
+
+# #try/except
+# valores = ["100", "abc", "250", ""]
+# for v in valores:
+#     try:
+#         numero = int(v)
+#         print(f"2 * {numero} = {2 * numero}")
+#     except ValueError:
+#         print(f"{v} não é numerico")
+
+
+# try:
+#     for v in valores:
+#         numero = int(v)
+#         print(numero * 2)
+# except ValueError:
+#     print(f"{v} Não é valido")
+# situacao = lambda nota: "aprovado" if nota >= 70 else "reprovado"
+# print(situacao(85))
+# print(situacao(40))
 # dobro = lambda x: x * 2
 # print(dobro(5))
 
